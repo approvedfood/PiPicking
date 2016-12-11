@@ -2,16 +2,14 @@ from tkinter import *
 import paho.mqtt.client as mqtt
 import datetime
 
-class GUI_setup:
+class GuiSetup:
+
 
     def __init__(self,master):
-
         topframe = Frame(master)
         topframe.grid(row=0)
-
         midframe = Frame(master)
         midframe.grid(row=1)
-
         bottomframe = Frame(master)
         bottomframe.grid(row=2)
 
@@ -22,6 +20,7 @@ class GUI_setup:
         v = StringVar()
         self.entry_userid = Entry(topframe,textvariable=v)
         self.entry_userid.grid(row = 0, column=1)
+
 
         def subscribeClient(self):
             channel = v.get()
@@ -185,7 +184,7 @@ class GUI_setup:
 root = Tk()
 root.title="Pi Pick"
 
-screen = GUI_setup(root)
+screen = GuiSetup(root)
 
 
 print("Setup")
