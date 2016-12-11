@@ -2,8 +2,8 @@ from tkinter import *
 import paho.mqtt.client as mqtt
 import datetime
 
-class GuiSetup:
 
+class GuiSetup:
 
     def __init__(self,master):
         topframe = Frame(master)
@@ -35,7 +35,7 @@ class GuiSetup:
             t.set(str("approvedfood/picking/" + str(channel)))
             cleanlabels()
 
-        #Button
+        # Button
         self.btn_userid = Button(topframe, text = "Go")
         self.btn_userid.bind("<Button-1>", subscribeClient)
         self.btn_userid.grid(row = 0, column=2)
@@ -47,7 +47,7 @@ class GuiSetup:
         self.lbl_connectionstatus = Label(topframe, text="Not Connected",textvariable = t)
         self.lbl_connectionstatus.grid(row=1, column=1)
 
-        #Row 0
+        # Row 0
         prod0frame = Frame(midframe)
         prod0frame.grid(row=0, column=0)
         self.lblprod0 = Label(prod0frame, text="Location 1")
@@ -55,7 +55,7 @@ class GuiSetup:
         self.lblprod0status = Label(prod0frame, text="Status", bg="grey")
         self.lblprod0status.grid(row=0, column=1)
 
-        #Row 1
+        # Row 1
         prod1frame = Frame(midframe)
         prod1frame.grid(row=1, column=0)
         self.lblprod1 = Label(prod1frame, text="Location 2")
@@ -63,7 +63,7 @@ class GuiSetup:
         self.lblprod1status = Label(prod1frame, text="Status", bg="grey")
         self.lblprod1status.grid(row=1, column=1)
 
-        #Row 2
+        # Row 2
         prod2frame = Frame(midframe)
         prod2frame.grid(row=2, column=0)
         self.lblprod2 = Label(prod2frame, text="Location 3")

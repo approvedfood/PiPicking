@@ -2,9 +2,12 @@
   <dictionary name="danielcluderay">
     <words>
       <w>bottomframe</w>
+      <w>connectionstatus</w>
+      <w>lblprod</w>
       <w>midframe</w>
       <w>mqtt</w>
       <w>topframe</w>
+      <w>userid</w>
     </words>
   </dictionary>
 </component>
