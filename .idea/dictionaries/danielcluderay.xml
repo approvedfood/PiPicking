@@ -1,12 +1,18 @@
 <component name="ProjectDictionaryState">
   <dictionary name="danielcluderay">
     <words>
+      <w>approvedfood</w>
       <w>bottomframe</w>
+      <w>connack</w>
       <w>connectionstatus</w>
+      <w>lbllastupdated</w>
       <w>lblprod</w>
       <w>midframe</w>
+      <w>mosquitto</w>
       <w>mqtt</w>
       <w>topframe</w>
+      <w>updatetime</w>
+      <w>userdata</w>
       <w>userid</w>
     </words>
   </dictionary>

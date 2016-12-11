@@ -5,7 +5,7 @@ import datetime
 
 class GuiSetup:
 
-    def __init__(self,master):
+    def __init__(self, master):
         topframe = Frame(master)
         topframe.grid(row=0)
         midframe = Frame(master)
@@ -15,14 +15,13 @@ class GuiSetup:
 
         # label
         self.lbl_userid = Label(topframe, text="Enter User ID")
-        self.lbl_userid.grid(row = 0)
+        self.lbl_userid.grid(row=0)
         # Entry box
         v = StringVar()
-        self.entry_userid = Entry(topframe,textvariable=v)
-        self.entry_userid.grid(row = 0, column=1)
+        self.entry_userid = Entry(topframe, textvariable=v)
+        self.entry_userid.grid(row=0, column=1)
 
-
-        def subscribeClient(self):
+        def subscribe_client(self):
             channel = v.get()
             print(channel)
             # self.f = str(self.lbl_connectionstatus['text'])
@@ -36,15 +35,15 @@ class GuiSetup:
             cleanlabels()
 
         # Button
-        self.btn_userid = Button(topframe, text = "Go")
-        self.btn_userid.bind("<Button-1>", subscribeClient)
-        self.btn_userid.grid(row = 0, column=2)
+        self.btn_userid = Button(topframe, text="Go")
+        self.btn_userid.bind("<Button-1>", subscribe_client)
+        self.btn_userid.grid(row=0, column=2)
         # Connection lbl
         self.lbl_connection = Label(topframe, text="Connection Status")
         self.lbl_connection.grid(row=1, column=0)
         # Connection status
         t = StringVar()
-        self.lbl_connectionstatus = Label(topframe, text="Not Connected",textvariable = t)
+        self.lbl_connectionstatus = Label(topframe, text="Not Connected", textvariable=t)
         self.lbl_connectionstatus.grid(row=1, column=1)
 
         # Row 0
@@ -113,9 +112,9 @@ class GuiSetup:
 
         # last updated status
         self.lbllastupdated = Label(bottomframe, text="Last Updated")
-        self.lbllastupdated.grid(row = 0)
+        self.lbllastupdated.grid(row=0)
         updatetime = StringVar()
-        self.lblUpdateTime = Label(bottomframe, textvariable = updatetime)
+        self.lblUpdateTime = Label(bottomframe, textvariable=updatetime)
         self.lblUpdateTime.grid(row=0, column=1)
         updatetime.set(datetime.datetime.now().time())
 
@@ -128,9 +127,7 @@ class GuiSetup:
             self.lblprod5status['bg'] = "grey"
             self.lblprod6status['bg'] = "grey"
             self.lblprod7status['bg'] = "grey"
-
-
-        # The callback for when the client receives a CONNACK response from the server.
+            # The callback for when the client receives a CONNACK response from the server.
 
         def on_connect(client, userdata, flags, rc):
             print("Connected with result code " + str(rc))
@@ -143,7 +140,7 @@ class GuiSetup:
     # The callback for when a PUBLISH message is received from the server.
         def on_message(client, userdata, msg):
             print(str(msg.payload))
-            self.lblUpdateTime=str(datetime.datetime.now().time())
+            self.lblUpdateTime = str(datetime.datetime.now().time())
             self.lblprod0status['bg'] = "grey"
             self.lblprod1status['bg'] = "grey"
             self.lblprod2status['bg'] = "grey"
@@ -152,7 +149,8 @@ class GuiSetup:
             self.lblprod5status['bg'] = "grey"
             self.lblprod6status['bg'] = "grey"
             self.lblprod7status['bg'] = "grey"
-
+            u = userdata
+            c = client
             if str(msg.payload) == "b'A'":
                 self.lblprod0status['bg'] = "green"
             elif str(msg.payload) == "b'B'":
@@ -170,19 +168,17 @@ class GuiSetup:
             elif str(msg.payload) == "b'H'":
                 self.lblprod7status['bg'] = "green"
 
-
-
         client = mqtt.Client()
         client.on_connect = on_connect
         client.on_message = on_message
         client.connect("test.mosquitto.org", 1883, 60)
         client.loop_start()
         # def connect_to_service(self, cservice):
-             # client.subscribe("dancluderay" + "/" + str(cservice))
+        # client.subscribe("dancluderay" + "/" + str(cservice))
 
 
 root = Tk()
-root.title="Pi Pick"
+root.title = "Pi Pick"
 
 screen = GuiSetup(root)
 
