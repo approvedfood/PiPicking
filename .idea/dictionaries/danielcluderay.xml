@@ -5,6 +5,8 @@
       <w>bottomframe</w>
       <w>connack</w>
       <w>connectionstatus</w>
+      <w>getnextemptytray</w>
+      <w>lastpicklocation</w>
       <w>lbllastupdated</w>
       <w>lblprod</w>
       <w>midframe</w>
@@ -12,6 +14,7 @@
       <w>mqtt</w>
       <w>nextlocationpick</w>
       <w>topframe</w>
+      <w>traycount</w>
       <w>updatetime</w>
       <w>userdata</w>
       <w>userid</w>

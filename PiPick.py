@@ -6,7 +6,8 @@ import datetime
 class GuiSetup:
     nextlocationpick = ""
     lastpicklocation = ""
-    traycount=0
+    traycount = 0
+
     def __init__(self, master):
         topframe = Frame(master)
         topframe.grid(row=0)
@@ -29,7 +30,7 @@ class GuiSetup:
             # self.f = str(self.lbl_connectionstatus['text'])
 
             client.unsubscribe(str(t.get()))
-            print("Connected with result code " + str(channel))
+            print('Connected with result code ' + str(channel))
             # Subscribing in on_connect() means that if we lose the connection and
             # reconnect then subscriptions will be renewed.
             client.subscribe("approvedfood/picking/" + str(channel))
@@ -141,44 +142,43 @@ class GuiSetup:
 
         def getnextemptytray():
 
-
             if self.traycount == 0:
                 self.nextlocationpick = "A"
                 self.lastpicklocation = "A"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 1:
                 self.nextlocationpick = "B"
                 self.lastpicklocation = "A"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 2:
                 self.nextlocationpick = "C"
                 self.lastpicklocation = "B"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 3:
                 self.nextlocationpick = "D"
                 self.lastpicklocation = "C"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 4:
                 self.nextlocationpick = "E"
                 self.lastpicklocation = "D"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 5:
                 self.nextlocationpick = "F"
                 self.lastpicklocation = "E"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 6:
                 self.nextlocationpick = "G"
                 self.lastpicklocation = "F"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 7:
                 self.nextlocationpick = "H"
                 self.lastpicklocation = "G"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
             elif self.traycount == 8:
                 # Turn lights off
                 self.nextlocationpick = "LightsOff"
                 self.lastpicklocation = "H"
-                self.traycount = self.traycount + 1
+                self.traycount += 1
     # The callback for when a PUBLISH message is received from the server.
         def on_message(client, userdata, msg):
             print(str(msg.payload))
@@ -197,7 +197,7 @@ class GuiSetup:
                 self.nextlocationpick = ""
                 self.lastpicklocation = ""
                 self.traycount = 0
-                updatetime.set( " - New Job - " + str(datetime.datetime.now().time()))
+                updatetime.set(" - New Job - " + str(datetime.datetime.now().time()))
 
             isnewtray = 0
             if str(msg.payload) == "b'New Tray'":
@@ -205,12 +205,11 @@ class GuiSetup:
                 # Rest the next pick job
                 getnextemptytray()
 
-
-            if str(msg.payload) == "b'A'" or (isnewtray == 1 and  self.nextlocationpick == "A"):
+            if str(msg.payload) == "b'A'" or (isnewtray == 1 and self.nextlocationpick == "A"):
                 self.nextlocationpick = "B"
                 self.lastpicklocation = "A"
                 self.lblprod0status['bg'] = "green"
-            elif str(msg.payload) == "b'B'" or (isnewtray == 1 and  self.nextlocationpick == "B"):
+            elif str(msg.payload) == "b'B'" or (isnewtray == 1 and self.nextlocationpick == "B"):
                 self.nextlocationpick = "C"
                 self.lastpicklocation = "B"
                 self.lblprod1status['bg'] = "green"
