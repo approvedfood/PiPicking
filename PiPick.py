@@ -191,12 +191,13 @@ class GuiSetup:
             self.lblprod5status['bg'] = "grey"
             self.lblprod6status['bg'] = "grey"
             self.lblprod7status['bg'] = "grey"
-
+            updatetime.set(str(datetime.datetime.now().time()))
             if str(msg.payload) == "b'New Job'":
                 # Rest the next pick job
                 self.nextlocationpick = ""
                 self.lastpicklocation = ""
                 self.traycount = 0
+                updatetime.set( " - New Job - " + str(datetime.datetime.now().time()))
 
             isnewtray = 0
             if str(msg.payload) == "b'New Tray'":
