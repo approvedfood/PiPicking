@@ -149,8 +149,6 @@ class GuiSetup:
             self.lblprod5status['bg'] = "grey"
             self.lblprod6status['bg'] = "grey"
             self.lblprod7status['bg'] = "grey"
-            u = userdata
-            c = client
             if str(msg.payload) == "b'A'":
                 self.lblprod0status['bg'] = "green"
             elif str(msg.payload) == "b'B'":
@@ -173,8 +171,6 @@ class GuiSetup:
         client.on_message = on_message
         client.connect("test.mosquitto.org", 1883, 60)
         client.loop_start()
-        # def connect_to_service(self, cservice):
-        # client.subscribe("dancluderay" + "/" + str(cservice))
 
 
 root = Tk()
